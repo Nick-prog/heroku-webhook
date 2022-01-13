@@ -2,8 +2,7 @@ import Webhook
 import json
 
 def start(data):
-    Data = data
-    dict = json.loads(Data)
+    dict = data
     list = dict["data"]
 
     if(len(list) != 0):
