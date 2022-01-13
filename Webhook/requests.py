@@ -26,7 +26,7 @@ def start(data):
         path = "//fs16.tamuk.edu/ds$/Admissions/Documents for Imaging/Clive/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
         Webhook.download(name, email, applicant, description, upload, department, path)
 
-def download(name, mail, applicant, description, upload, department, path, method, first, last):
+def download(name, mail, applicant, description, upload, department, path):
     url = str(upload).replace("\\", "/")
 
     doc = wget.download(url, path)
