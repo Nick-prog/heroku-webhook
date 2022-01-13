@@ -1,4 +1,4 @@
 import Webhook
 
 def start(data):
-    print(data["fieldValues"])
+    print(list(data.keys()))
