@@ -1,4 +1,3 @@
-from .connection import *
 from .dictionaries import *
 from .requests import *
 from .__init__ import *
