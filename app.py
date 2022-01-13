@@ -7,6 +7,7 @@ app = Flask(__name__)
 def get_webhook():
     if request.method == 'POST':
        Webhook.start()
+       print(request.json)
        return request.json
     else:
         abort(400)
