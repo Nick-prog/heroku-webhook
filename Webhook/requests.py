@@ -1,29 +1,8 @@
 import Webhook
 import json
-import wget
-import os.path
-import os
-import ssl
-from datetime import datetime
 
-def total(method):
-    Data = Webhook.id(method)
-    dict = json.loads(Data)
-    list = dict["page_info"]
-    return list.get("total_count")
-
-def month_year():
-    month_year = datetime.now()
-    month_year_format = month_year.strftime("%B %Y")
-    return month_year_format #Returns the current month and year
-
-def today():
-    today = datetime.now()
-    today_format = today.strftime("%m.%d.%Y")
-    return today_format #Returns the current month/date/year
-
-def start(GET):
-    Data = GET
+def start(data):
+    Data = data
     dict = json.loads(Data)
     list = dict["data"]
 
