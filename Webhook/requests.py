@@ -22,8 +22,8 @@ def today():
     today_format = today.strftime("%m.%d.%Y")
     return today_format #Returns the current month/date/year
 
-def uploaded_documents():
-    Data = Webhook.get(method=1)
+def start():
+    Data = Webhook.GET()
     dict = json.loads(Data)
     list = dict["data"]
 
@@ -31,41 +31,7 @@ def uploaded_documents():
         for total in range (len(list)):
             if(list[total].get("event").get("method") == "POST" and list[total].get("event").get("body") != ""):
                 fieldValues = list[total].get("event").get("body").get("formSubmission").get("fieldValues") #Cycle through all 6 of the field values we acquire
-                name = str(fieldValues.get(Webhook.text("name_text"))).strip("[']")
-                mail = str(fieldValues.get(Webhook.text("mail_text"))).strip("[']")
-                applicant = str(fieldValues.get(Webhook.text("app_text"))).strip("[']")
-                description = str(fieldValues.get(Webhook.text("des_text"))).strip("[']")
-                upload = str(fieldValues.get(Webhook.text("up_text"))).strip("[']")
-                department = str(fieldValues.get(Webhook.text("dept_text"))).strip("[']")
-                path = "//fs16.tamuk.edu/ds$/Admissions/Documents for Imaging/Clive/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
-                #path = "C:/Users/KUNRR004/Downloads/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
-                Webhook.download(name, mail, applicant, description, upload, department, path, 1, "None", "None")
-                Webhook.store(total,method=1)
-            else:
-                Webhook.store(total,method=1)
-        Webhook.delete(method=1)
-
-def fee_documents():
-    Data = Webhook.get(method=2)
-    dict = json.loads(Data)
-    list = dict["data"]
-    
-    if(len(list) != 0):
-        for total in range (len(list)):
-            if(list[total].get("event").get("method") == "POST" and list[total].get("event").get("body") != ""):
-                fieldValues = list[total].get("event").get("body").get("formSubmission").get("fieldValues") #Cycle through all 6 of the field values we acquire
-                mail = str(fieldValues.get(Webhook.text2("mail_text"))).strip("[']")
-                applicant = str(fieldValues.get(Webhook.text2("app_text"))).strip("[']")
-                upload = str(fieldValues.get(Webhook.text2("up_text"))).strip("[']")
-                first = str(fieldValues.get(Webhook.text2("first_text"))).strip("[']")
-                last = str(fieldValues.get(Webhook.text2("last_text"))).strip("[']")
-                path = "//fs16.tamuk.edu/ds$/Admissions/Documents for Imaging/Clive/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
-                #path = "C:/Users/KUNRR004/Downloads/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
-                Webhook.download("None", mail, applicant, "None", upload, "None", path, 2, first, last)
-                Webhook.store(total,method=2)
-            else:
-                Webhook.store(total,method=2)
-        Webhook.delete(method=2)
+                print(fieldValues)
 
 def download(name, mail, applicant, description, upload, department, path, method, first, last):
     url = str(upload).replace("\\", "/")
