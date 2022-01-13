@@ -1,4 +1,4 @@
 import Webhook
 
 def start(data):
-    print(list(data["formSubmission"].get("fieldValues")))
+    print(data["formSubmission"].get("fieldValues"))
