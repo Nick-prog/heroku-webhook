@@ -1,4 +1,8 @@
 import Webhook
 
 def start(data):
-    print(data["formSubmission"].get("fieldValues"))
+    list = data["formSubmission"].get("fieldValues")
+    
+    if(len(list) != 0):
+        name = str(list.get("Name")).strip("[']")
+        print(name)
