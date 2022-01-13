@@ -8,7 +8,6 @@ def get_webhook():
     if request.method == 'POST':
        data = request.json
        Webhook.start(data)
-       return data
     else:
         abort(400)
         
