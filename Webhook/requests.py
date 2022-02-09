@@ -27,7 +27,7 @@ def uploaded_documents(data):
     
     if(len(list) != 0):
         name = str(list.get("Name")).strip("[']")
-        email = str(list.get("Email")).strip("[']")
+        mail = str(list.get("Email")).strip("[']")
         applicant = str(list.get("Applicant ID (K0012345)")).strip("[']")
         description = str(list.get("Describe the document(s) you are loading.")).strip("[']")
         upload = str(list.get("No file chosen")).strip("[']")
