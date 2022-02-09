@@ -22,7 +22,7 @@ def today():
     today_format = today.strftime("%m.%d.%Y")
     return today_format #Returns the current month/date/year
 
-def uploaded_documents():
+def uploaded_documents(data):
     list = data["formSubmission"].get("fieldValues")
     
     if(len(list) != 0):
