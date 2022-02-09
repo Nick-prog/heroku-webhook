@@ -35,10 +35,6 @@ def uploaded_documents():
         #path = "//fs16.tamuk.edu/ds$/Admissions/Documents for Imaging/Clive/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
         path = "C:/Users/KUNRR004/Downloads/%s/%s/%s" %(Webhook.month_year(), Webhook.today(), applicant.replace(" ", ""))
         Webhook.download(name, mail, applicant, description, upload, department, path, 1, "None", "None")
-        Webhook.store(total,method=1)
-    else:
-        Webhook.store(total,method=1)
-    Webhook.delete(method=1)
 
 def download(name, mail, applicant, description, upload, department, path, method, first, last):
     url = str(upload).replace("\\", "/")
