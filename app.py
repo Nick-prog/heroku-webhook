@@ -7,7 +7,7 @@ app = Flask(__name__)
 def get_webhook():
     if request.method == 'POST':
        data = request.json
-       Webhook.start(data)
+       Webhook.uploaded_documents(data)
        return data
     else:
         abort(400)
