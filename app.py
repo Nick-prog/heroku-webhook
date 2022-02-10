@@ -3,6 +3,10 @@ import flask
 from flask import Flask, request, abort
 
 app = Flask(__name__)
+@app.route('/')
+def index():
+    return "<h1>Welcome!</h1>"
+
 @app.route('/webhook', methods=['POST'])
 def get_webhook():
     if request.method == 'POST':
@@ -13,4 +17,4 @@ def get_webhook():
         abort(400)
         
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True)
