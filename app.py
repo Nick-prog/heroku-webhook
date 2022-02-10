@@ -11,7 +11,9 @@ def get_webhook():
     if request.method == 'GET':
         return jsonify({
             "MESSAGE" : "Connection confirmed.",
-            "METHOD": "GET"
+            "METHOD": "GET",
+            "CONTENT-TYPE": "application/json",
+            "STATUS-CODE" : "200"
         })
 
 @app.route('/webhook', methods=['POST'])
@@ -22,8 +24,12 @@ def post_webhook():
         print(data)
         return jsonify({
             "MESSAGE" : "Connection confirmed.",
-            "METHOD": "POST"
+            "METHOD": "POST",
+            "BODY": f"{data}",
+            "CONTENT-TYPE": "application/json",
+            "STATUS-CODE" : "200"
         })
         
 if __name__ == '__main__':
     app.run(threaded=True)
+
