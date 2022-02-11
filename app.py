@@ -20,8 +20,6 @@ def get_webhook():
 def post_webhook():
     if request.method == 'POST':
         data = request.json
-        #Webhook.uploaded_documents(data)
-        print(data)
         return jsonify({
             "MESSAGE" : "Connection confirmed.",
             "METHOD": "POST",
